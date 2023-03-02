@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BTS x Spotify Premium Website</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#" class="logo">BTS x Spotify Premium Program</a>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Offers</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Pricing Cards -->
+    <section id="pricing">
+      <div class="container">
+        <div class="pricing-card">
+          <h3>Employee Spotify Premium</h3>
+          <p>$4.50/Month</p>
+          <a href="#" class="btn signup-btn" data-card="Employee">Sign Up</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Referred Spotify Premium</h3>
+          <p>$4.99/Month</p>
+          <a href="#" class="btn signup-btn" data-card="Referred">Sign Up</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popup screen -->
+    <div class="popup">
+      <div class="popup-content">
+        <h2>Welcome BTS x Spotify</h2>
+        <p>
+          BTS and Spotify offer discounted Premium Subscriptions to employees
+          and referrals.
+        </p>
+      </div>
+    </div>
+
+    <!-- Signup Popup -->
+    <div class="signup-popup">
+      <div class="signup-popup-content">
+        <span class="close">&times;</span>
+        <h2>Register Now</h2>
+        <div class="form-group">
+          <form id="form1" method="post">
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              required=""
+              class="form-control"
+            /><br />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required=""
+              class="form-control"
+            /><br />
+            <input
+              type="phone"
+              name="phone"
+              placeholder="Phone Number [123-456-7890]"
+              required=""
+              pattern="[0-9-]+"
+              class="form-control"
+            /><br />
+            <input
+              type="phone"
+              name="phoneConf"
+              placeholder="Confirm Phone Number"
+              required=""
+              pattern="[0-9-]+"
+              class="form-control"
+            /><br />
+            <button type="submit" class="btn btn-success">Register</button>
+          </form>
+        </div>
+
+        <div class="mssg bg-danger">
+          <span id="check"></span>
+        </div>
+        <div>
+          <span>Already Registered! <a href="/login">Login</a></span>
+        </div>
+        <div id="LangTable"><a href="/login" id="aa"></a></div>
+      </div>
+    </div>
+
+    <!-- JavaScript to show/hide Signup Popup -->
+    <script type="text/javascript">
+      // Get the popup and close button elements
+      var popup = document.querySelector(".popup");
+      var closeBtn = document.querySelector(".close");
+
+      // Show popup when page loads
+      window.onload = function () {
+        popup.style.display = "block";
+      };
+
+      // Hide popup when close button is clicked
+      closeBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+      });
+
+      $(document).ready(function () {
+        $(".pricing-card .signup-btn").click(function () {
+          $(".signup-popup").css("display", "block");
+          $(".signup-popup form")[0].reset();
+        });
+
+        $(".close").click(function () {
+          $(".popup").css("display", "none");
+          $(".signup-popup").css("display", "none");
+        });
+
+        $(".signup-popup form").submit(function (event) {
+          event.preventDefault();
+          var phone = $('input[name="phone"]').val();
+          var phoneConf = $('input[name="phoneConf"]').val();
+          if (phone !== phoneConf) {
+            document.getElementById("check").innerHTML = "Fields don't match";
+            return;
+          } else {
+            document.getElementById("check").innerHTML =
+              "Successfully Register!";
+          }
+          $.ajax({
+            type: "POST",
+            url: "/",
+            data: $(".signup-popup form").serialize(),
+            dataType: "json",
+            success: function (response) {
+              $(".signup-popup")[0].reset();
+              document.getElementById("check").innerHTML = response.Success;
+              //ADD THIS CODE
+              setTimeout(function () {
+                document.getElementById("check").innerHTML = "";
+              }, 3000);
+              if (response.Success == "You are regestered,You can login now.") {
+                document.getElementById("aa").click();
+              }
+            },
+            error: function () {},
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

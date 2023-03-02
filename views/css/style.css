@@ -1,0 +1,319 @@
+/* Global Styles */
+html {
+  font-size: 62.5%; /* set default font size to 10px */
+  scroll-behavior: smooth; /* adds smooth scrolling behavior */
+}
+
+body {
+  font-family: Arial, sans-serif; /* set default font family */
+  color: #333; /* set default font color */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none; /* remove default underline from links */
+  color: #1db954; /* set link color */
+  transition: color 0.3s ease; /* add smooth color transition on hover */
+}
+
+a:hover {
+  color: #0e8c3a; /* change link color on hover */
+}
+
+/* Header Styles */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 2rem;
+}
+
+nav ul li:first-child {
+  margin-left: 0;
+}
+
+nav ul li a {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #1db954;
+}
+
+/* Pricing Styles */
+#pricing {
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10rem 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+.pricing-card h3 {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+.pricing-card p {
+  font-size: 1.6rem;
+  margin-bottom: 4rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #1db954;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Popup styling */
+/* Popup styling */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  animation: popup 1s ease-out forwards;
+  left: 32%;
+  transform: translateX(-50%);
+}
+
+@keyframes popup {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* Animation keyframes */
+@keyframes showPopup {
+  0% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    border-radius: 10px;
+  }
+  50% {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    width: 80%;
+    border-radius: 10px;
+  }
+  100% {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+@keyframes hidePopup {
+  0% {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    border-radius: 0;
+  }
+  50% {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    width: 80%;
+    border-radius: 10px;
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    border-radius: 10px;
+  }
+}
+
+/* Signup Popup Styles */
+
+.signup-popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: fade-in 0.3s ease-in-out forwards;
+}
+
+.signup-popup-content {
+  background-color: #fff;
+  margin: 0% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  animation: slide-up 0.3s ease-in-out forwards;
+}
+
+.signup-popup-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.signup-popup-content label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.signup-popup-content input[type="text"],
+.signup-popup-content input[type="email"],
+.signup-popup-content input[type="phone"] {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.signup-popup-content button[type="submit"] {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #1db954;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-popup-content button[type="submit"]:hover {
+  background-color: #1ed760;
+}
+
+.signup-popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Hide the form when the user clicks the Register button */
+.signup-popup-content.hidden {
+  display: none;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
