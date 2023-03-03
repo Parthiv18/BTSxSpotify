@@ -53,7 +53,7 @@
     <div class="signup-popup">
       <div class="signup-popup-content">
         <span class="close">&times;</span>
-        <h2>Register Now</h2>
+        <h2>Sign Up Now</h2>
         <div class="form-group">
           <form id="form1" method="post">
             <input
@@ -66,7 +66,7 @@
             <input
               type="text"
               name="username"
-              placeholder="Username"
+              placeholder="CODE:A09T"
               required=""
               class="form-control"
             /><br />
@@ -86,7 +86,7 @@
               pattern="[0-9-]+"
               class="form-control"
             /><br />
-            <button type="submit" class="btn btn-success">Register</button>
+            <button type="submit" class="btn btn-success">Sign Up</button>
           </form>
         </div>
 
@@ -94,7 +94,11 @@
           <span id="check"></span>
         </div>
         <div>
-          <span>Already Registered! <a href="/login">Login</a></span>
+          <span
+            >We will contact you once your account has been verified!<a
+              href="/login"
+            ></a
+          ></span>
         </div>
         <div id="LangTable"><a href="/login" id="aa"></a></div>
       </div>
@@ -117,6 +121,10 @@
       });
 
       $(document).ready(function () {
+        $('input[name="username"]').prop("disabled", true);
+      });
+
+      $(document).ready(function () {
         $(".pricing-card .signup-btn").click(function () {
           $(".signup-popup").css("display", "block");
           $(".signup-popup form")[0].reset();
@@ -136,7 +144,7 @@
             return;
           } else {
             document.getElementById("check").innerHTML =
-              "Successfully Register!";
+              "Successfully Register! We will email you once you're accpeted";
           }
           $.ajax({
             type: "POST",
