@@ -41,7 +41,7 @@
     <!-- Popup screen -->
     <div class="popup">
       <div class="popup-content">
-        <h2>Welcome BTS x Spotify</h2>
+        <h2>Welcome to BTS x Spotify</h2>
         <p>
           BTS and Spotify offer discounted Premium Subscriptions to employees
           and referrals.
@@ -133,6 +133,8 @@
         $(".close").click(function () {
           $(".popup").css("display", "none");
           $(".signup-popup").css("display", "none");
+          // Show Popup Screen when Signup Popup is closed
+          popup.style.display = "block";
         });
 
         $(".signup-popup form").submit(function (event) {
@@ -154,7 +156,7 @@
             success: function (response) {
               $(".signup-popup")[0].reset();
               document.getElementById("check").innerHTML = response.Success;
-              //ADD THIS CODE
+              // ADD THIS CODE
               setTimeout(function () {
                 document.getElementById("check").innerHTML = "";
               }, 3000);
