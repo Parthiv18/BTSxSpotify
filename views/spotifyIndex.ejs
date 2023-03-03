@@ -66,8 +66,9 @@
             <input
               type="text"
               name="username"
-              placeholder="CODE:A09T"
+              placeholder="Username"
               required=""
+              id="username-field"
               class="form-control"
             /><br />
             <input
@@ -121,7 +122,7 @@
       });
 
       $(document).ready(function () {
-        $('input[name="username"]').prop("disabled", true);
+        document.getElementById("username-field").readOnly = true;
       });
 
       $(document).ready(function () {
@@ -141,6 +142,7 @@
           event.preventDefault();
           var phone = $('input[name="phone"]').val();
           var phoneConf = $('input[name="phoneConf"]').val();
+          document.getElementById("username-field").value = "User";
           if (phone !== phoneConf) {
             document.getElementById("check").innerHTML = "Fields don't match";
             return;

@@ -2,7 +2,6 @@
 html {
   font-size: 62.5%; /* set default font size to 10px */
   scroll-behavior: smooth; /* adds smooth scrolling behavior */
-  overflow: hidden;
 }
 
 /* Default styles for all screens */
